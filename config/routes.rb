@@ -8,4 +8,9 @@ Rails.application.routes.draw do
   post '/movies', to: 'movies#create'
   delete '/movies/:id', to: 'movies#destroy'
   get '/lists', to: 'lists#index'
+  get '/lists/new', to: 'lists#new'
+  get '/lists/:id', to: 'lists#show'
+  post '/lists', to: 'lists#create'
+  get '/bookmarks', to: 'bookmarks#index'
+  get '/bookmarks/:id', to: 'bookmarks#show'
 end
