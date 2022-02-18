@@ -6,7 +6,6 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
-    @review = Review.new(list: @list)
   end
 
   def new
@@ -20,7 +19,7 @@ class ListsController < ApplicationController
     else
       render :new
     end
-
+  end
 
   def destroy
     @list.destroy
