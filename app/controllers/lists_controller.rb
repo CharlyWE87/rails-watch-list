@@ -17,3 +17,9 @@ class ListsController < ApplicationController
     @list.save
   end
 end
+
+private
+
+def restaurant_params
+  params.require(:list).permit(:name, )
+end
