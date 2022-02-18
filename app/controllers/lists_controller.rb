@@ -6,6 +6,7 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    @review = Review.new(list: @list)
   end
 
   def new
@@ -13,13 +14,27 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = List.new(params[:list])
-    @list.save
+    @list = List.new(list_params)
+    if @list.save
+      redirect_to list_path(@list)
+    else
+      render :new
+    end
+
+
+  def destroy
+    @list.destroy
+    redirect_to lists_path
   end
-end
 
-private
 
-def restaurant_params
-  params.require(:list).permit(:name, )
+  private
+
+  def set_list
+    @list = List.find(params[:id])
+  end
+
+  def list_params
+    params.require(:list).permit(:name)
+  end
 end
